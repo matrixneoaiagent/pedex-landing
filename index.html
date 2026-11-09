@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pedex — Know what you own</title>
+  <meta name="description" content="A clearer view of real-world assets: the business, the evidence and the rights behind every tokenized asset.">
+  <meta name="theme-color" content="#111111">
+  <link rel="canonical" href="https://pedex.org/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pedex — Know what you own">
+  <meta property="og:description" content="A clearer view of real-world assets: the business, the evidence and the rights behind every tokenized asset.">
+  <meta property="og:url" content="https://pedex.org/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pedex — Know what you own">
+  <meta name="twitter:description" content="A clearer view of real-world assets: the business, the evidence and the rights behind every tokenized asset.">
+  <style>
+    :root{
+      --ink:#111111; --panel:#191919; --paper:#f4f2eb; --yellow:#ffbd24;
+      --muted:#aaa9a4; --line:#343434; --soft:#1c1c1b; --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--ink);color:var(--paper);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    .skip{position:absolute;left:16px;top:-80px;background:var(--yellow);color:var(--ink);padding:12px 16px;font-weight:800;z-index:50}
+    .skip:focus{top:16px}
+    .wrap{width:min(100% - 48px,var(--max));margin-inline:auto}
+    .nav{height:78px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:40px;position:sticky;top:0;background:rgba(17,17,17,.88);backdrop-filter:blur(12px);z-index:20}
+    .brand{font-size:25px;font-weight:900;letter-spacing:-.08em;text-decoration:none;display:inline-flex;align-items:baseline}
+    .brand i{font-style:normal;color:var(--yellow)}
+    .nav-links{display:flex;gap:28px;margin-left:auto;font-size:13px;font-weight:650}
+    .nav-links a{text-decoration:none;color:#c9c8c2;transition:color .2s}
+    .nav-links a:hover{color:var(--yellow)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 22px;border:1px solid #6c6c64;background:var(--soft);color:var(--paper);text-decoration:none;font-weight:800;font-size:13px;letter-spacing:-.01em;transition:transform .2s,background .2s,border-color .2s}
+    .btn:hover{transform:translateY(-1px);border-color:var(--yellow);background:#242422}
+    .btn-yellow{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+    .btn-yellow:hover{background:#ffd05c;border-color:#ffd05c}
+    .btn-ghost{background:transparent;border-color:var(--line)}
+    .hero{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:64px;align-items:center;padding:84px 0 96px;min-height:640px}
+    .kicker{display:flex;align-items:center;gap:12px;text-transform:uppercase;letter-spacing:.17em;color:var(--yellow);font-size:11px;font-weight:800;margin:0 0 26px}
+    .kicker:before{content:"";width:26px;height:1px;background:var(--yellow)}
+    h1{font-size:clamp(54px,7vw,92px);line-height:.94;letter-spacing:-.07em;margin:0 0 26px;font-weight:850}
+    h1 em{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:var(--yellow);font-style:italic;letter-spacing:-.04em}
+    .lede{max-width:520px;color:#c0bfb9;font-size:19px;line-height:1.65;margin:0 0 32px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:16px}
+    .hero-art{position:relative;min-height:500px}
+    .hero-art svg{width:100%;height:auto;display:block;filter:drop-shadow(0 24px 60px rgba(0,0,0,.45))}
+    .micro{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 22px;color:#8a8a80;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:750}
+    .micro span{display:inline-flex;align-items:center;gap:8px}
+    .micro span:before{content:"";width:5px;height:5px;background:var(--yellow);border-radius:50%}
+    .strip{border-block:1px solid var(--line);background:#151514}
+    .strip-inner{display:grid;grid-template-columns:1.1fr repeat(3,1fr);gap:24px;padding:26px 0;align-items:center}
+    .strip-title{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8a8a80;font-weight:800}
+    .strip-item{font-size:13px;font-weight:750;color:#d7d5cd;display:flex;align-items:center;gap:10px}
+    .strip-item b{color:var(--yellow);font-size:11px;letter-spacing:.12em}
+    .section{padding:104px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:36px;margin-bottom:44px}
+    .label{text-transform:uppercase;letter-spacing:.17em;color:var(--yellow);font-size:11px;font-weight:800;margin:0 0 14px}
+    h2{font-size:clamp(36px,4.4vw,58px);line-height:1.02;letter-spacing:-.055em;margin:0;font-weight:820}
+    h2 em{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:var(--yellow);font-style:italic}
+    .section-head p{max-width:420px;color:var(--muted);margin:0;font-size:15px}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #4a4a46;border-bottom:1px solid #4a4a46}
+    .feature{padding:34px 30px 40px;border-right:1px solid #4a4a46;min-height:270px;display:flex;flex-direction:column}
+    .feature:last-child{border-right:0}
+    .feature .num{color:var(--yellow);font-size:12px;font-weight:800;letter-spacing:.14em;margin-bottom:auto}
+    .feature h3{font-size:24px;line-height:1.12;letter-spacing:-.035em;margin:44px 0 12px;font-weight:800}
+    .feature p{color:var(--muted);font-size:14px;line-height:1.7;margin:0}
+    .process{background:#171716;border-block:1px solid #373731}
+    .process-inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:8%;padding:96px 0}
+    .process-copy p{color:var(--muted);font-size:15px;max-width:360px}
+    .steps{list-style:none;margin:0;padding:0;counter-reset:step}
+    .steps li{display:grid;grid-template-columns:56px 1fr;gap:20px;padding:24px 0;border-top:1px solid #373731}
+    .steps li:last-child{border-bottom:1px solid #373731}
+    .steps .n{color:var(--yellow);font-size:12px;font-weight:800;letter-spacing:.12em;padding-top:4px}
+    .steps h3{margin:0 0 6px;font-size:19px;letter-spacing:-.02em}
+    .steps p{margin:0;color:var(--muted);font-size:14px}
+    .audiences{padding-top:0}
+    .aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .aud{border:1px solid var(--line);background:linear-gradient(180deg,#191919,#151514);padding:28px;min-height:210px;display:flex;flex-direction:column;text-decoration:none;transition:border-color .2s,transform .2s}
+    .aud:hover{border-color:var(--yellow);transform:translateY(-2px)}
+    .aud span{color:#8a8a80;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800}
+    .aud h3{margin:34px 0 8px;font-size:22px;letter-spacing:-.03em}
+    .aud p{margin:0;color:var(--muted);font-size:14px;line-height:1.65}
+    .aud .arrow{margin-top:auto;color:var(--yellow);font-size:20px}
+    .contact{background:var(--paper);color:var(--ink);border-block:1px solid #d8d4c8}
+    .contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:8%;padding:96px 0}
+    .contact .label{color:#9a6b00}
+    .contact h2{color:var(--ink)}
+    .contact h2 em{color:#9a6b00}
+    .contact-copy p{color:#4d4a42;font-size:15px;max-width:380px}
+    .contact-meta{margin-top:30px;font-size:13px;color:#4d4a42;line-height:1.8}
+    .contact-meta a{color:#111;font-weight:750}
+    form{display:grid;gap:14px}
+    .field{display:grid;gap:7px}
+    label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:#4d4a42}
+    input,textarea{width:100%;border:1px solid #c9c4b6;background:#fbfaf6;color:#111;padding:14px 15px;font:inherit;font-size:15px;border-radius:0;outline:none;transition:border-color .2s,box-shadow .2s}
+    input:focus,textarea:focus{border-color:#9a6b00;box-shadow:0 0 0 3px rgba(255,189,36,.28)}
+    textarea{min-height:130px;resize:vertical}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .contact .btn{background:var(--ink);border-color:var(--ink);color:var(--paper);cursor:pointer}
+    .contact .btn:hover{background:#2a2a27;border-color:#2a2a27}
+    .form-status{min-height:22px;margin:2px 0 0;font-size:13px;color:#2c5e2e}
+    .form-status a{color:#111;font-weight:800}
+    .form-note{font-size:11px;color:#6c675c;margin:0}
+    footer{padding:50px 0 34px;background:#0d0d0c;color:#8a8a80;font-size:12px}
+    .foot-top{display:flex;justify-content:space-between;gap:30px;align-items:flex-start;padding-bottom:28px;border-bottom:1px solid #262624}
+    .foot-brand{font-size:23px;font-weight:900;letter-spacing:-.08em;color:var(--paper)}
+    .foot-brand i{font-style:normal;color:var(--yellow)}
+    .foot-links{display:flex;flex-wrap:wrap;gap:18px 26px;justify-content:flex-end}
+    .foot-links a{text-decoration:none;color:#aaa9a4}
+    .foot-links a:hover{color:var(--yellow)}
+    .foot-bottom{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-top:22px;font-size:11px;line-height:1.7}
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr;gap:38px;padding:56px 0 64px;min-height:0}
+      .hero-art{max-width:560px;margin-inline:auto;min-height:0}
+      .feature-grid{grid-template-columns:1fr}
+      .feature{border-right:0;border-bottom:1px solid #4a4a46;min-height:0}
+      .feature:last-child{border-bottom:0}
+      .strip-inner{grid-template-columns:1fr 1fr;gap:16px}
+      .strip-title{grid-column:1/-1}
+      .process-inner,.contact-grid{grid-template-columns:1fr;gap:36px;padding:64px 0}
+      .aud-grid{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .nav .btn{margin-left:auto}
+      .section{padding:72px 0}
+      .section-head{flex-direction:column;align-items:flex-start;gap:16px}
+    }
+    @media (max-width: 560px){
+      .wrap{width:min(100% - 32px,var(--max))}
+      .nav{height:68px}
+      .hero{padding-top:44px}
+      .hero-actions .btn{width:100%}
+      .form-row{grid-template-columns:1fr}
+      .foot-top{flex-direction:column}
+      .foot-links{justify-content:flex-start}
+      .micro{gap:8px 16px}
+    }
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *{transition:none!important;animation:none!important}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav wrap">
+    <a class="brand" href="#top" aria-label="Pedex home">pedex<i>.</i></a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#features">The asset</a>
+      <a href="#process">How it works</a>
+      <a href="#audiences">For investors</a>
+      <a href="#audiences">For issuers</a>
+    </nav>
+    <a class="btn btn-yellow" href="#contact">Start a conversation <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="kicker">A clearer view of real-world assets</p>
+        <h1 id="hero-title">Know what<br>you <em>own.</em></h1>
+        <p class="lede">Explore the business, the evidence and the rights behind tokenized assets — so every decision starts with the full picture in view.</p>
+        <div class="hero-actions">
+          <a class="btn btn-yellow" href="#features">Explore the asset <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-ghost" href="#contact">Book a walkthrough</a>
+        </div>
+        <div class="micro" aria-label="What the platform covers">
+          <span>Business context</span>
+          <span>Source evidence</span>
+          <span>Proposed rights</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 560 520" role="presentation" focusable="false">
+          <rect x="18" y="18" width="524" height="484" rx="2" fill="#191919" stroke="#343434"/>
+          <g stroke="#2b2b29" stroke-width="1">
+            <path d="M18 150h524M18 282h524M18 414h524"/>
+            <path d="M150 18v484M282 18v484M414 18v484"/>
+          </g>
+          <path d="M282 72c64 0 116 52 116 116v180H166V188c0-64 52-116 116-116Z" fill="#ffbd24"/>
+          <path d="M282 116c40 0 72 32 72 72v132H210V188c0-40 32-72 72-72Z" fill="#111111"/>
+          <rect x="74" y="352" width="92" height="114" fill="#f4f2eb"/>
+          <rect x="86" y="366" width="56" height="8" fill="#111111" opacity=".85"/>
+          <rect x="86" y="384" width="68" height="4" fill="#111111" opacity=".35"/>
+          <rect x="86" y="396" width="62" height="4" fill="#111111" opacity=".35"/>
+          <rect x="86" y="408" width="48" height="4" fill="#111111" opacity=".35"/>
+          <rect x="394" y="352" width="92" height="114" fill="#f4f2eb"/>
+          <rect x="406" y="366" width="56" height="8" fill="#111111" opacity=".85"/>
+          <rect x="406" y="384" width="68" height="4" fill="#111111" opacity=".35"/>
+          <rect x="406" y="396" width="62" height="4" fill="#111111" opacity=".35"/>
+          <rect x="406" y="408" width="48" height="4" fill="#111111" opacity=".35"/>
+          <circle cx="282" cy="202" r="34" fill="#ffbd24"/>
+          <path d="M266 202l11 11 22-24" fill="none" stroke="#111111" stroke-width="7" stroke-linecap="square"/>
+          <text x="56" y="56" fill="#f4f2eb" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.6">PEDEX / ASSET RECORD</text>
+          <text x="56" y="82" fill="#ffbd24" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="1.4">01 — BUSINESS</text>
+          <text x="420" y="460" fill="#ffbd24" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="1.4">03 — RIGHTS</text>
+          <text x="56" y="460" fill="#ffbd24" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="1.4">02 — EVIDENCE</text>
+          <path d="M166 458h232" stroke="#ffbd24" stroke-width="1"/>
+          <circle cx="166" cy="458" r="3" fill="#ffbd24"/>
+          <circle cx="398" cy="458" r="3" fill="#ffbd24"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="strip" aria-label="What Pedex connects">
+      <div class="strip-inner wrap">
+        <div class="strip-title">One record, three layers</div>
+        <div class="strip-item"><b>01</b> The underlying business</div>
+        <div class="strip-item"><b>02</b> The evidence behind it</div>
+        <div class="strip-item"><b>03</b> The rights it conveys</div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="features" aria-labelledby="features-title">
+      <div class="section-head">
+        <div>
+          <p class="label">A closer look</p>
+          <h2 id="features-title">Assets deserve<br><em>a closer look.</em></h2>
+        </div>
+        <p>Each detail should answer a real question before a decision is made. Pedex puts the context, the paperwork and the proposed terms in one place.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature">
+          <span class="num">01</span>
+          <h3>The underlying business</h3>
+          <p>See the people, operations and economics behind an asset — not just a ticker or a headline.</p>
+        </article>
+        <article class="feature">
+          <span class="num">02</span>
+          <h3>The evidence</h3>
+          <p>Find source documents and disclosures together, with gaps made clear instead of buried.</p>
+        </article>
+        <article class="feature">
+          <span class="num">03</span>
+          <h3>The rights</h3>
+          <p>Understand exactly what an approved instrument would convey, and what it would not.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="process" id="process" aria-labelledby="process-title">
+      <div class="process-inner wrap">
+        <div class="process-copy">
+          <p class="label">A considered process</p>
+          <h2 id="process-title">From asset<br><em>to understanding.</em></h2>
+          <p>Research starts with the asset, continues through the evidence, and ends with the rights. Pedex keeps those three layers connected.</p>
+        </div>
+        <ol class="steps">
+          <li><span class="n">01</span><div><h3>Know the underlying asset</h3><p>Start with the business, ownership structure and documents behind the profile.</p></div></li>
+          <li><span class="n">02</span><div><h3>Understand the rights</h3><p>Review the instrument, economics, restrictions and eligibility when approved terms exist.</p></div></li>
+          <li><span class="n">03</span><div><h3>Follow the lifecycle</h3><p>Keep issuance, holdings and distributions connected to the asset record.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section audiences wrap" id="audiences" aria-labelledby="audiences-title">
+      <div class="section-head">
+        <div>
+          <p class="label">Your next step</p>
+          <h2 id="audiences-title">A path for every<br><em>perspective.</em></h2>
+        </div>
+        <p>Whether you are researching an asset, bringing one to market, or advising a client, start from the same clear record.</p>
+      </div>
+      <div class="aud-grid">
+        <a class="aud" href="#contact"><span>For investors</span><h3>Research with context.</h3><p>Learn what an asset represents before considering an opportunity.</p><span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="aud" href="#contact"><span>For issuers</span><h3>Build on evidence.</h3><p>Bring the asset, its documentation and its potential structure into view.</p><span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="aud" href="#contact"><span>For brokers</span><h3>Explain with clarity.</h3><p>Give clients a record they can read, question and compare.</p><span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact-grid wrap">
+        <div class="contact-copy">
+          <p class="label">Start with clarity</p>
+          <h2 id="contact-title">Tell us what<br><em>you are looking at.</em></h2>
+          <p>Questions about a real-world asset, a tokenization structure or the Pedex record? Send a note and we will point you to the right next step.</p>
+          <div class="contact-meta">
+            <div>General inquiries<br><a href="mailto:contact@pedex.org">contact@pedex.org</a></div>
+            <div style="margin-top:14px">Marketing &amp; partnerships<br><a href="mailto:marketing@pedex.org">marketing@pedex.org</a></div>
+          </div>
+        </div>
+        <form id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="field"><label for="name">Name *</label><input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name"></div>
+            <div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@company.com"></div>
+          </div>
+          <div class="field"><label for="subject">Subject</label><input id="subject" name="subject" type="text" placeholder="Asset research, partnership, something else"></div>
+          <div class="field"><label for="message">Message *</label><textarea id="message" name="message" required placeholder="What would you like to understand?"></textarea></div>
+          <button class="btn" type="submit">Send message <span aria-hidden="true">↗</span></button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          <p class="form-note">This preview opens your email app with the message ready to send. A production deployment can post to your form endpoint.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-top">
+        <div>
+          <div class="foot-brand">pedex<i>.</i></div>
+          <div style="margin-top:10px;max-width:300px">Asset intelligence and tokenization infrastructure.</div>
+        </div>
+        <nav class="foot-links" aria-label="Footer navigation">
+          <a href="#features">The asset</a>
+          <a href="#process">How it works</a>
+          <a href="#audiences">For investors</a>
+          <a href="#audiences">For issuers</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <div class="foot-bottom">
+        <span>© <span id="year">2026</span> Pedex. Operated by Black Megaurion Ltd.</span>
+        <span>Informational preview. Investing involves risk; review the applicable terms and disclosures before making a decision.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById('contact-form');
+      var status = document.getElementById('form-status');
+      var year = document.getElementById('year');
+      if (year) year.textContent = String(new Date().getFullYear());
+      if (!form) return;
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        var data = new FormData(form);
+        var name = String(data.get('name') || '').trim();
+        var email = String(data.get('email') || '').trim();
+        var subject = String(data.get('subject') || 'Pedex inquiry').trim();
+        var message = String(data.get('message') || '').trim();
+        var body = 'Name: ' + name + '\nEmail: ' + email + '\n\n' + message;
+        var href = 'mailto:contact@pedex.org?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        status.innerHTML = 'Thanks, ' + name.replace(/[<>&]/g, '') + '. Your message is ready — <a href="' + href + '">open it in your email app</a> to send.';
+      });
+    })();
+  </script>
+</body>
+</html>
